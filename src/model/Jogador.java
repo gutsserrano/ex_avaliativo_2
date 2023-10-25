@@ -5,12 +5,14 @@ import java.util.Random;
 public class Jogador {
     private boolean maquina;
     private Coisa coisaEscolhida;
+    private int ponto;
 
     public Jogador(boolean maquina) {
         this.maquina = maquina;
         if (maquina) {
             aleatorio();
         }
+        ponto = 0;
     }
 
 
@@ -64,6 +66,16 @@ public class Jogador {
 
         return retorno;
     }
+
+
+    public int getPonto() {
+        return ponto;
+    }
+
+    public void addPonto() {
+        ponto += 1;
+    }
+  
 
     
 
