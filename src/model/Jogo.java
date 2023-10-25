@@ -34,34 +34,12 @@ public class Jogo {
     }
 
     public void confronto() {
-        if(!jogador1.isMaquina()){
-            if(jogador1.getCoisaEscolhida().ganha(jogador2.getCoisaEscolhida())) {
-                System.out.println("jogador jogou: "+ jogador1.getCoisaString());
-                System.out.println("Máquina jogou: "+ jogador2.getCoisaString());
-                System.out.println("Jogador ganhou.");
-            } else if (jogador2.getCoisaEscolhida().ganha(jogador1.getCoisaEscolhida())) {
-                System.out.println("jogador jogou: "+ jogador1.getCoisaString());
-                System.out.println("Máquina jogou: "+ jogador2.getCoisaString());
-                System.out.println("Máquina Ganhou."); 
-            } else {
-                System.out.println("Empate");
-            }
-        }else{
-            if(jogador1.getCoisaEscolhida().ganha(jogador2.getCoisaEscolhida())) {
-                System.out.println("Máquina 1 jogou: "+ jogador1.getCoisaString());
-                System.out.println("Máquina 2 jogou: "+ jogador2.getCoisaString());
-                System.out.println("Máquina 1 ganhou.");
-            } else if (jogador2.getCoisaEscolhida().ganha(jogador1.getCoisaEscolhida())) {
-                System.out.println("Máquina 1 jogou: "+ jogador1.getCoisaString());
-                System.out.println("Máquina 2 jogou: "+ jogador2.getCoisaString());
-                System.out.println("Máquina 2 Ganhou."); 
-            } else {
-                System.out.println("Empate");
-            }
-        }
+
+        mostra(jogador1, jogador2);
+        
     }
 
-    public static int entrada(){
+    private static int entrada(){
         String answer;
         String msg = "Tipo de Jogo";
         String title = "Pedra Papel Tesoura";
@@ -91,25 +69,10 @@ public class Jogo {
                 break;
         } 
 
-        /* int retorno;
-        System.out.println("Digite 1 para JxM ou 2 para MxM:");
-        Scanner input = new Scanner(System.in);
-        int valor = input.nextInt();
-        input.close();
-
-        if(valor != 1 || valor != 2){
-            retorno = 0;
-        }else{
-            retorno = valor;
-        } */
-
         return retorno;
     }
 
-    public static int input(){
-        /*Scanner input = new Scanner(System.in);
-        int retorno = input.nextInt();
-        input.close();*/
+    private static int input(){
 
         String answer;
         String msg = "Escolha:";
@@ -145,6 +108,71 @@ public class Jogo {
         } 
 
         return retorno;
+    }
+
+    private static void mostra(Jogador j1, Jogador j2){
+
+        String title = "Pedra Papel Tesoura";
+
+        if(!j1.isMaquina()){
+            if(j1.getCoisaEscolhida().ganha(j2.getCoisaEscolhida())) {
+                /* System.out.println("jogador jogou: "+ j1.getCoisaString());
+                System.out.println("Máquina jogou: "+ j2.getCoisaString());
+                System.out.println("Jogador ganhou."); */
+
+                JOptionPane.showMessageDialog(null, 
+                "Jogador jogou: "+ j1.getCoisaString() + "\nMáquina jogou: "+ j2.getCoisaString() + "\nJogador ganhou!",
+                title,
+                JOptionPane.PLAIN_MESSAGE);
+
+            } else if (j2.getCoisaEscolhida().ganha(j1.getCoisaEscolhida())) {
+                /* System.out.println("jogador jogou: "+ j1.getCoisaString());
+                System.out.println("Máquina jogou: "+ j2.getCoisaString());
+                System.out.println("Máquina Ganhou."); */
+                
+                JOptionPane.showMessageDialog(null, 
+                "Jogador jogou: "+ j1.getCoisaString() + "\nMáquina jogou: "+ j2.getCoisaString() + "\nMáquina ganhou!",
+                title,
+                JOptionPane.PLAIN_MESSAGE);
+
+            } else {
+                //System.out.println("Empate");
+
+                JOptionPane.showMessageDialog(null, 
+                "Empate!",
+                title,
+                JOptionPane.PLAIN_MESSAGE);
+            }
+        }else{
+            if(j1.getCoisaEscolhida().ganha(j2.getCoisaEscolhida())) {
+                /* System.out.println("Máquina 1 jogou: "+ j1.getCoisaString());
+                System.out.println("Máquina 2 jogou: "+ j2.getCoisaString());
+                System.out.println("Máquina 1 ganhou."); */
+
+                JOptionPane.showMessageDialog(null, 
+                "Máquina 1 jogou: "+ j1.getCoisaString() + "\nMáquina 2 jogou: "+ j2.getCoisaString() + "\nMáquina 1 ganhou!",
+                title,
+                JOptionPane.PLAIN_MESSAGE);
+
+            } else if (j2.getCoisaEscolhida().ganha(j1.getCoisaEscolhida())) {
+                /* System.out.println("Máquina 1 jogou: "+ j1.getCoisaString());
+                System.out.println("Máquina 2 jogou: "+ j2.getCoisaString());
+                System.out.println("Máquina 2 Ganhou.");  */
+
+                JOptionPane.showMessageDialog(null, 
+                "Máquina 1 jogou: "+ j1.getCoisaString() + "\nMáquina 2 jogou: "+ j2.getCoisaString() + "\nMáquina 2 ganhou!",
+                title,
+                JOptionPane.PLAIN_MESSAGE);
+
+            } else {
+                System.out.println("Empate");
+
+                JOptionPane.showMessageDialog(null, 
+                "Jogador jogou: "+ j1.getCoisaString() + "\nMáquina jogou: "+ j2.getCoisaString() + "\nEmpate",
+                title,
+                JOptionPane.PLAIN_MESSAGE);
+            }
+        }
     }
 
 }
