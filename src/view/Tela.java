@@ -9,27 +9,27 @@ public class Tela{
     
 
     public void init(){
-        Jogo jogo;
-        jogo = new Jogo();
-
+        Jogo jogo = new Jogo();
         int entrada = entrada();
+        boolean melhorDeTres = jogo.isMelhorDeTres(tipoJogo());
+
         int input = 0;
         int contJ1 = 0;
         int contJ2 = 0;
-        boolean melhorDeTres;
-
-        melhorDeTres = jogo.isMelhorDeTres(tipoJogo());
+        
         do{
             if(entrada == 1){
                 input = input();
             }
-            jogo.init(entrada, input);
+            jogo.init(entrada);
+            jogo.setJogada(input);
+
             mostra(jogo.resultado(jogo.getJogador1(), jogo.getJogador2()), jogo.getJogador1(), jogo.getJogador2());
+
             contJ1 += jogo.getJogador1().getPonto();
             contJ2 += jogo.getJogador2().getPonto();
-
-            System.out.println(contJ1);
-            System.out.println(contJ2);
+            System.out.println("Placar para consulta: "+ contJ1 + " a " + contJ2);
+            
         }while(contJ1 < 2 && contJ2 < 2 && melhorDeTres);
 
         telaFinal(contJ1, contJ2, entrada);
@@ -111,6 +111,13 @@ public class Tela{
                 JOptionPane.PLAIN_MESSAGE); 
                 jgd2.addPonto();   
                 break;
+
+            case 6:
+                JOptionPane.showMessageDialog(null,
+                "Máquina 1 jogou: "+ jgd1.getCoisaString() + "\nMáquina 2 jogou: "+ jgd2.getCoisaString() + "\nEmpate!",
+                title,
+                JOptionPane.PLAIN_MESSAGE);
+                break;
             default:
                 break;
         }
@@ -158,8 +165,9 @@ public class Tela{
         return retorno;
     }
 
-    public int tipoJogo(){
+    public boolean tipoJogo(){
         int answer;
+        boolean retorno;
         String msg = "Escolha o tipo de jogo";
         String title = "Pedra Papel Tesoura";
 
@@ -175,7 +183,13 @@ public class Tela{
         opcoes[0]
         );
 
-        return answer;
+        if(answer == 0){
+            retorno = true;
+        }else{
+            retorno = false;
+        }
+
+        return retorno;
 
     }
 

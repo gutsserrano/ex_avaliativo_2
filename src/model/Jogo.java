@@ -9,11 +9,11 @@ public class Jogo {
         
     }
 
-    public void init(int tipo, int jogada) {
+    public void init(int tipo) {
         switch (tipo) {
             case 1:
                 jogador1 = new Jogador(false);
-                jogador1.escolha(jogada);
+                //jogador1.escolha(jogada);
                 jogador2 = new Jogador(true);
                 break;
 
@@ -34,9 +34,17 @@ public class Jogo {
     public Jogador getJogador2() {
         return jogador2;
     }
+
+    public void setJogada(int jogada){
+        jogador1.escolha(jogada);
+    }
+
+    public void setAleatorio(){
+        jogador2.aleatorio();
+    }
     
-    public boolean isMelhorDeTres(int modo){
-        if(modo == 0){
+    public boolean isMelhorDeTres(boolean ehMd3){
+        if(ehMd3){
             return true;
         }else{
             return false;
@@ -50,14 +58,11 @@ public class Jogo {
         if(!j1.isMaquina()){
             if(j1.getCoisaEscolhida().ganha(j2.getCoisaEscolhida())) {
 
-                retorno = 1; //Humano vence maquina
-                //j1.addPonto();  
+                retorno = 1; //Humano vence maquina 
 
             } else if (j2.getCoisaEscolhida().ganha(j1.getCoisaEscolhida())) {
 
                 retorno = 2; //Maquina vence humano
-                //j2.addPonto();
-                
                 
             } else {
 
@@ -68,28 +73,20 @@ public class Jogo {
             if(j1.getCoisaEscolhida().ganha(j2.getCoisaEscolhida())) {
 
                 retorno = 4; //M1 vence M2
-                //j1.addPonto();
 
             } else if (j2.getCoisaEscolhida().ganha(j1.getCoisaEscolhida())) {
 
                 retorno = 5; //M2 vence M1
-                //j2.addPonto();
 
             } else {
 
-                retorno = 3;
+                retorno = 6;
                 
             }
         }
 
-
         return retorno;
     }
 
-    
-
-    
-
-    
 
 }

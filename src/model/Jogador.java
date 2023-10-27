@@ -16,7 +16,7 @@ public class Jogador {
     }
 
 
-    public void escolha(int opcao) {
+    public void escolha(int opcao) { //setCoisa();
         switch (opcao) {
             case 1:
                 coisaEscolhida = new Pedra();
@@ -32,7 +32,7 @@ public class Jogador {
         }
     }
 
-    private void aleatorio() {
+    public void aleatorio() {
         Random gerador = new Random();
 
         if (maquina) {
