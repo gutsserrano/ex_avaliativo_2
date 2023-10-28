@@ -15,7 +15,7 @@ public class Jogador {
         ponto = 0;
     }
 
-
+    // Instancia uma pedra, papel ou tesoura
     public void escolha(int opcao) { //setCoisa();
         switch (opcao) {
             case 1:
@@ -32,11 +32,11 @@ public class Jogador {
         }
     }
 
-    public void aleatorio() {
+    // Escolhe aleatoriamente de 1 a 3
+    private void aleatorio() {
         Random gerador = new Random();
 
         if (maquina) {
-            // Escolhe de 1 a 3
             escolha(gerador.nextInt(3) + 1);
         }
 
@@ -52,6 +52,7 @@ public class Jogador {
     }
 
 
+    // Transforma a coisa pra String
     public String getCoisaString() {
         Coisa jogada = getCoisaEscolhida();
         String retorno;

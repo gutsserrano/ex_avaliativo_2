@@ -30,7 +30,7 @@ public class Tela{
             contJ2 += jogo.getJogador2().getPonto();
             System.out.println("Placar para consulta: "+ contJ1 + " a " + contJ2);
             
-        }while(contJ1 < 2 && contJ2 < 2 && melhorDeTres);
+        }while(contJ1 < 2 && contJ2 < 2 && (melhorDeTres || jogo.resultado(jogo.getJogador1(), jogo.getJogador2()) == 3)); // Verifica se a pontuação dos jogadores é menor que 2, verifica se é melhor de 3 ou se no modo uma partida empatou
 
         telaFinal(contJ1, contJ2, entrada);
     }
@@ -121,9 +121,6 @@ public class Tela{
             default:
                 break;
         }
-
-        /* System.out.println(jgd1.getPonto());
-        System.out.println(jgd2.getPonto()); */
 
     }
 

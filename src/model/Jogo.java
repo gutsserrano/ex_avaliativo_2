@@ -38,10 +38,6 @@ public class Jogo {
     public void setJogada(int jogada){
         jogador1.escolha(jogada);
     }
-
-    public void setAleatorio(){
-        jogador2.aleatorio();
-    }
     
     public boolean isMelhorDeTres(boolean ehMd3){
         return ehMd3;
