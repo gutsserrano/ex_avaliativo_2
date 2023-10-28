@@ -44,11 +44,7 @@ public class Jogo {
     }
     
     public boolean isMelhorDeTres(boolean ehMd3){
-        if(ehMd3){
-            return true;
-        }else{
-            return false;
-        }
+        return ehMd3;
     }
 
     public int resultado(Jogador j1, Jogador j2){
